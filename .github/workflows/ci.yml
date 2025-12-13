@@ -1,0 +1,37 @@
+name: Link
+
+on: [push]
+
+env:
+    OAT_HOME: ".OAT"
+    OAT_VERSION: "0.25.0"
+
+jobs:
+    link-windows:
+        name: Link assets on Windows
+        runs-on: windows-latest
+
+        steps:
+        - name: Check out files
+          uses: actions/checkout@main
+
+        - name: Setup OAT
+          uses: diamante0018/setup-oat@main
+          with:
+            version: ${{ env.OAT_VERSION  }}
+
+        - name: Setup Python
+          uses: actions/setup-python@v5
+          with:
+            python-version: "3.12"
+
+        - name: Link assets
+          run: |
+            python3 build.py
+
+        - name: Upload mod
+          uses: actions/upload-artifact@main
+          with:
+            name: Compiled assets
+            path: |
+                ./compiled/

@@ -1,0 +1,9 @@
+{
+    "name": "Characters",
+    "author": "TheCursedNoob",
+    "description": "Uncommon characters?!",
+    "version": "1",
+    "fastfiles": [
+        "$HOME/fastfiles/guard.ff"
+    ]
+}

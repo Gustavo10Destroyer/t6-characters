@@ -1,0 +1,3 @@
+>game,T6
+include,characters/guard
+script,maps/mp/zombies/character.gsc
