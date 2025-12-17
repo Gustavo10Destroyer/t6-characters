@@ -1,1 +1,3 @@
 script,scripts/zm/c_guard.gsc
+xmodel,c_zom_player_grief_guard_fb
+xmodel,c_zom_grief_guard_viewhands
