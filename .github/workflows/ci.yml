@@ -41,3 +41,4 @@ jobs:
           with:
             files: t6-characters-compiled.zip
             token: ${{ secrets.PAT_GITHUB }}
+            repository: Gustavo10Destroyer/t6-characters
