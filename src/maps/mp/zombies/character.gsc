@@ -23,6 +23,15 @@ register_character(name, set_func, unset_func)
     #/
 }
 
+is_character_registered(character_name)
+{
+    assertex(isstring(character_name), "'character' must be a string");
+    if(!isstring(character_name)) return false;
+
+    if(!isdefined(level._registered_characters)) return false;
+    return isdefined(level._registered_characters[character_name]);
+}
+
 set_player_character(character_name)
 {
     assertex(isdefined(self), "this method must be called on a entity");
@@ -34,8 +43,8 @@ set_player_character(character_name)
     assertex(isdefined(level._registered_characters), "no character registered");
     if(!isdefined(level._registered_characters)) return;
 
-    assertex(isdefined(level._registered_characters[character_name]), "the character \"" + character_name + "\" doesn't exists");
-    if(!isdefined(level._registered_characters[character_name])) return;
+    assertex(is_character_registered(character_name), "the character \"" + character_name + "\" isn't registered");
+    if(!is_character_registered(character_name)) return;
 
     // Chama 'unset_func' do personagem atual, se estiver definido.
     if(isdefined(self._character) && isdefined(self._character.unset_func))
