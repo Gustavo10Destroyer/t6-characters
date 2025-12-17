@@ -40,5 +40,4 @@ jobs:
           if: github.ref_type == 'tag'
           with:
             files: t6-characters-compiled.zip
-          env:
-            GITHUB_TOKEN: ${{ secrets.PAT_GITHUB }}
+            token: ${{ secrets.PAT_GITHUB }}
