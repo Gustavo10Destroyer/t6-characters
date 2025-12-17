@@ -1,6 +1,8 @@
 name: Link
 
-on: [push]
+on:
+  release:
+    types: [published]
 
 env:
     OAT_HOME: ".OAT"
@@ -29,9 +31,12 @@ jobs:
           run: |
             python3 build.py
 
-        - name: Upload mod
-          uses: actions/upload-artifact@main
+        - name: Package artifact
+          run: |
+            Compress-Archive -Path ./compiled/* -DestinationPath t6-characters-compiled.zip
+
+        - name: Upload artifact to release
+          uses: softprops/action-gh-release@v2
+          if: github.ref_type == 'tag'
           with:
-            name: Compiled assets
-            path: |
-                ./compiled/
+            files: t6-characters-compiled.zip
